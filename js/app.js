@@ -75,7 +75,7 @@ const App = {
       app.innerHTML = `
         ${Sidebar.render()}
         ${TopBar.render()}
-        <div class="mobile-overlay" id="mobileOverlay" onclick="Sidebar.closeMobile()"></div>
+        <div class="mobile-overlay" id="mobileOverlay" onclick="Sidebar.toggleMobile()"></div>
         <main class="main-content ${collapsed ? 'sidebar-collapsed' : ''}" id="mainContent">
           <div id="pageContent"></div>
         </main>

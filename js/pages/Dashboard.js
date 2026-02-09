@@ -17,7 +17,8 @@ const DashboardPage = {
     const avgScore = practiceHistory.length ?
       Math.round(practiceHistory.reduce((s, h) => s + (h.score || 0), 0) / practiceHistory.length) : 0;
     const greeting = Helpers.getGreeting();
-    const quote = MockData.dailyQuotes[Math.floor(Math.random() * MockData.dailyQuotes.length)];
+    const quoteObj = MockData.quotes[Math.floor(Math.random() * MockData.quotes.length)];
+    const quote = `"${quoteObj.text}" — ${quoteObj.author}`;
 
     content.innerHTML = `
       <div class="page-content">
