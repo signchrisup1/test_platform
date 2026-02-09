@@ -12,7 +12,7 @@ const SubjectsPage = {
       <div class="page-content">
         <div class="flex justify-between items-center mb-lg">
           <div>
-            <h1>📚 Subjects</h1>
+            <h1><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--primary-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Subjects</h1>
             <p class="text-muted mt-sm" style="font-size:0.9rem">Track progress across your subjects</p>
           </div>
           <button class="btn btn-primary" onclick="SubjectsPage.manageSubjects()">

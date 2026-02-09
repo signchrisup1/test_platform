@@ -20,7 +20,7 @@ const ResourcesPage = {
       <div class="page-content">
         <div class="flex justify-between items-center mb-lg">
           <div>
-            <h1>📁 Resources</h1>
+            <h1><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--primary-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Resources</h1>
             <p class="text-muted mt-sm" style="font-size:0.9rem">Upload and organize your study materials</p>
           </div>
           <button class="btn btn-primary" onclick="ResourcesPage.addResource()">+ Add Resource</button>

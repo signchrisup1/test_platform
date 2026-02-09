@@ -11,7 +11,7 @@ const OnboardingPage = {
       <div class="onboarding-page">
         <div class="onboarding-container">
           <div style="text-align:center;margin-bottom:24px">
-            <span style="font-size:2rem">📚</span>
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="url(#onboardGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="onboardGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#6366f1"/><stop offset="100%" style="stop-color:#0ea5e9"/></linearGradient></defs><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             <h2 style="margin-top:8px" class="text-gradient">Let's get you set up</h2>
           </div>
           <div class="onboarding-progress">
