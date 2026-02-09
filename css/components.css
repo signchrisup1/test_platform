@@ -1163,10 +1163,8 @@
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.04em;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
+}
 }
 
 .stat-label {
