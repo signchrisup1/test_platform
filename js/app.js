@@ -8,6 +8,15 @@ const App = {
     const theme = Store.get('theme') || 'dark';
     document.body.className = `theme-${theme}`;
 
+    // Global error handler to catch rendering errors
+    window.onerror = function(msg, url, line, col, error) {
+      console.error('App Error:', msg, 'at', url, line, col, error);
+      var pageContent = document.getElementById('pageContent');
+      if (pageContent && !pageContent.innerHTML.trim()) {
+        pageContent.innerHTML = '<div class="page-content"><div class="card" style="padding:40px;text-align:center"><h3 style="margin-bottom:8px">Something went wrong</h3><p class="text-muted">' + msg + '</p><button class="btn btn-primary mt-md" onclick="location.reload()">Reload</button></div></div>';
+      }
+    };
+
     // Set up router guards
     Router.beforeEach((path) => {
       const isAuth = Store.get('isAuthenticated');
@@ -51,8 +60,20 @@ const App = {
 
     Object.entries(mainPages).forEach(([path, handler]) => {
       Router.register(path, () => {
-        this.renderLayout();
-        handler();
+        try {
+          this.renderLayout();
+        } catch (e) {
+          console.error('Layout render error:', e);
+        }
+        try {
+          handler();
+        } catch (e) {
+          console.error('Page render error for ' + path + ':', e);
+          var pc = document.getElementById('pageContent');
+          if (pc) {
+            pc.innerHTML = '<div class="page-content"><div class="card" style="padding:40px;text-align:center"><h3 style="margin-bottom:8px">Error loading page</h3><p class="text-muted">' + e.message + '</p><button class="btn btn-primary mt-md" onclick="Router.navigate(\'/dashboard\')">Go to Dashboard</button></div></div>';
+          }
+        }
       });
     });
 
@@ -72,25 +93,41 @@ const App = {
 
     // Only re-render layout if needed
     if (!document.getElementById('sidebar')) {
-      app.innerHTML = `
-        ${Sidebar.render()}
-        ${TopBar.render()}
-        <div class="mobile-overlay" id="mobileOverlay" onclick="Sidebar.closeMobile()"></div>
-        <main class="main-content ${collapsed ? 'sidebar-collapsed' : ''}" id="mainContent">
-          <div id="pageContent"></div>
-        </main>
-      `;
+      var sidebarHtml = '';
+      var topbarHtml = '';
+      try { sidebarHtml = Sidebar.render(); } catch(e) { console.error('Sidebar render error:', e); sidebarHtml = '<aside class="sidebar" id="sidebar"></aside>'; }
+      try { topbarHtml = TopBar.render(); } catch(e) { console.error('TopBar render error:', e); topbarHtml = '<header class="topbar" id="topbar"></header>'; }
+
+      app.innerHTML =
+        sidebarHtml +
+        topbarHtml +
+        '<div class="mobile-overlay" id="mobileOverlay" onclick="Sidebar.toggleMobile()"></div>' +
+        '<main class="main-content ' + (collapsed ? 'sidebar-collapsed' : '') + '" id="mainContent">' +
+          '<div id="pageContent"></div>' +
+        '</main>';
     } else {
       // Update sidebar and topbar
-      const sidebar = document.getElementById('sidebar');
-      if (sidebar) sidebar.outerHTML = Sidebar.render();
+      var sidebar = document.getElementById('sidebar');
+      if (sidebar) {
+        try { sidebar.outerHTML = Sidebar.render(); } catch(e) { console.error('Sidebar update error:', e); }
+      }
 
-      const topbar = document.getElementById('topbar');
-      if (topbar) topbar.outerHTML = TopBar.render();
+      var topbar = document.getElementById('topbar');
+      if (topbar) {
+        try { topbar.outerHTML = TopBar.render(); } catch(e) { console.error('TopBar update error:', e); }
+      }
 
-      const mainContent = document.getElementById('mainContent');
+      var mainContent = document.getElementById('mainContent');
       if (mainContent) {
-        mainContent.className = `main-content ${collapsed ? 'sidebar-collapsed' : ''}`;
+        mainContent.className = 'main-content ' + (collapsed ? 'sidebar-collapsed' : '');
+      }
+
+      // Ensure pageContent exists
+      if (!document.getElementById('pageContent')) {
+        var mc = document.getElementById('mainContent');
+        if (mc) {
+          mc.innerHTML = '<div id="pageContent"></div>';
+        }
       }
     }
   },
