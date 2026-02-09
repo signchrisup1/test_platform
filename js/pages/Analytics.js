@@ -38,7 +38,7 @@ const AnalyticsPage = {
     content.innerHTML = `
       <div class="page-content">
         <div class="mb-lg">
-          <h1>📊 Analytics</h1>
+          <h1><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--primary-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Analytics</h1>
           <p class="text-muted mt-sm" style="font-size:0.9rem">Track your study progress and performance</p>
         </div>
 

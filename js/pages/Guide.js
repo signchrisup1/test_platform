@@ -14,7 +14,7 @@ const GuidePage = {
       <div class="page-content">
         <div class="flex justify-between items-center mb-lg">
           <div>
-            <h1>📋 Guide</h1>
+            <h1><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg> Guide</h1>
             <p class="text-muted mt-sm" style="font-size:0.9rem">Break down complex questions into manageable steps</p>
           </div>
         </div>

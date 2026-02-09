@@ -16,7 +16,7 @@ const PlannerPage = {
       <div class="page-content">
         <div class="flex justify-between items-center mb-lg">
           <div>
-            <h1>📅 Study Planner</h1>
+            <h1><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--primary-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Study Planner</h1>
             <p class="text-muted mt-sm" style="font-size:0.9rem">Plan and organize your study schedule</p>
           </div>
           <button class="btn btn-primary" onclick="PlannerPage.addEvent()">+ Add Event</button>

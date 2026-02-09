@@ -14,7 +14,7 @@ const PracticePage = {
       <div class="page-content">
         <div class="flex justify-between items-center mb-lg">
           <div>
-            <h1>🎯 Practice</h1>
+            <h1><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Practice</h1>
             <p class="text-muted mt-sm" style="font-size:0.9rem">Generate questions and test your knowledge</p>
           </div>
           <div class="flex gap-sm">
