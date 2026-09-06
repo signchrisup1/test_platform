@@ -2,3 +2,6 @@ node_modules/
 .DS_Store
 *.log
 .env
+
+# Alter server checkout (cloned by alter-server/Setup-Alter.ps1)
+/Alter/
